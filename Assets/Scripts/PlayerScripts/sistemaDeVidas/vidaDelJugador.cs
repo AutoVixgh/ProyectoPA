@@ -19,7 +19,6 @@ public class vidaDelJugador : MonoBehaviour
     // sonido que la rata reproduce al recibir danio
     public AudioSource audioSource;
 
-
     // Start is called before the first frame update
     void Start()
     {
