@@ -12,4 +12,9 @@ public class MenuScript : MonoBehaviour
         Debug.Log("Saliendo del juego...");
         Application.Quit();
     }
+
+    public void volverAlMenuPrincipal() {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("MenuPrincipal");
+    }
 }
