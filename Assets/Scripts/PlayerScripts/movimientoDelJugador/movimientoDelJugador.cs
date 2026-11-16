@@ -13,10 +13,15 @@ public class movimientoDelJugador : MonoBehaviour
     // se puede seleccionar un tipo de capa en especifico que nuestro raycast detecte, en este caso ground 
     [SerializeField] private LayerMask groundLayer;
 
+    [Header("Audio")]
+    [SerializeField] private AudioClip sonidoDelSalto;
+
     // Componentes y variables internas
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
     private Animator animator;
+    private AudioSource audioSource;
+
 
     private float velocidadActualEjeX;
     private bool jugadorEstaTocandoSuelo = true;
@@ -27,6 +32,8 @@ public class movimientoDelJugador : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
+
     }
 
     void Update()
@@ -45,9 +52,13 @@ public class movimientoDelJugador : MonoBehaviour
     private void saltoDelJugador()
     {
         if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow)) && jugadorEstaTocandoSuelo)
-    {
-        jugadorEstaSaltando = true;
-    }
+        {
+            jugadorEstaSaltando = true;
+            if (audioSource != null && sonidoDelSalto != null)
+            {
+                audioSource.PlayOneShot(sonidoDelSalto);
+            }
+        }
     }
 
     // funcion del movimiento horizontal del personaje

@@ -55,6 +55,11 @@ public class Puerta : MonoBehaviour
         {
             colliderPuerta.enabled = false;
             tilemapRenderer.enabled = false;
+
+            if (audioSource != null && sonidoAbrir != null)
+            {
+                audioSource.PlayOneShot(sonidoAbrir);
+            }
             
         }
     }
